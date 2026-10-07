@@ -1,0 +1,17 @@
+using System.Numerics;
+
+namespace Entities
+{
+    public static class GenericMathHelper
+    {
+        public static T Add<T>(T a, T b) where T : IAdditionalOperators<T, T, T>
+        {
+            return a + b;
+        }
+
+        public static T Multiply<T>(T a, T b) where T : IMultiplyOperators<T, T, T>
+        {
+            return a * b;
+        }
+    }
+}
