@@ -27,8 +27,8 @@ namespace VoronovLR1
             Console.WriteLine();
 
             // 2. Ввод информации о работниках
-            Employee emp1 = new Employee("Иванов");
-            Employee emp2 = new Employee("Петров");
+            Employee emp1 = new Employee("Воронов");
+            Employee emp2 = new Employee("Романов");
             Employee emp3 = new Employee("Сидоров");
 
             department.AddEmployee(emp1);
@@ -58,7 +58,6 @@ namespace VoronovLR1
             }
             Console.WriteLine();
 
-            // 5. Вычисление зарплаты по фамилии
             string searchName = "Иванов";
             Console.WriteLine($"Поиск зарплаты для работника: {searchName}");
             Employee foundEmp = null;
@@ -82,7 +81,6 @@ namespace VoronovLR1
             }
             Console.WriteLine();
 
-            // 6. Вычисление суммы выплат всем работникам
             double totalPayroll = department.CalculateTotalPayroll();
             Console.WriteLine($"Общая сумма выплат всем работникам: {totalPayroll} руб.");
         }
