@@ -74,7 +74,7 @@
     <Compile Include="Collections\CustomCollection.cs" />
     <Compile Include="Contracts\IPayrollSystem.cs" />
     <Compile Include="Entities\Employee.cs" />
-    <Compile Include="Entities\GenericMathHelper.cs" />
+    <Compile Include="Entities\GenericMath.cs" />
     <Compile Include="Entities\SalaryDepartment.cs" />
     <Compile Include="Entities\WorkRecord.cs" />
     <Compile Include="Entities\WorkType.cs" />

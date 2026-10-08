@@ -1,18 +1,14 @@
-using System;
-
-namespace GGGGGG_NNN_Lab2.Entities
+namespace Entities
 {
     public class WorkRecord
     {
-        public string WorkTypeName { get; set; }
-        public double HoursWorked { get; set; }
-        public DateTime Date { get; set; }
+        public WorkType WorkType { get; set; }
+        public double Quantity { get; set; }
 
-        public WorkRecord(string workTypeName, double hours, DateTime date)
+        public WorkRecord(WorkType workType, double quantity)
         {
-            WorkTypeName = workTypeName;
-            HoursWorked = hours;
-            Date = date;
+            WorkType = workType;
+            Quantity = quantity;
         }
     }
 }

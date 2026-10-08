@@ -1,27 +1,36 @@
 using System;
-using System.Collections.Generic;
+using Collections;
 
-namespace GGGGGG_NNN_Lab2.Entities
+namespace Entities
 {
     public class Journal
     {
-        private List<string> _logs = new List<string>();
+        private MyCustomCollection<string> entries;
 
-        public void LogEvent(object sender, PayrollEventArgs e)
+        public Journal()
         {
-            string logEntry = $"[{DateTime.Now}] Event: {e.Message} | Entity: {e.EntityName}";
-            _logs.Add(logEntry);
-            Console.WriteLine(logEntry);
+            entries = new MyCustomCollection<string>();
         }
 
-        public void PrintLogs()
+        public void LogEvent(object? sender, PayrollList e)
         {
-            Console.WriteLine("--- Journal Logs ---");
-            foreach (var log in _logs)
+            string entry = $"[{DateTime.Now:HH:mm:ss}] {e}";
+            entries.Add(entry);
+        }
+
+        public void PrintLog()
+        {
+            Console.WriteLine("--- Журнал событий ---");
+            if (entries.Count == 0)
             {
-                Console.WriteLine(log);
+                Console.WriteLine("  Журнал пуст.");
+                return;
             }
-            Console.WriteLine("--------------------");
+            foreach (string entry in entries)
+            {
+                Console.WriteLine($"  {entry}");
+            }
+            Console.WriteLine($"  Всего записей: {entries.Count}");
         }
     }
 }

@@ -1,24 +1,18 @@
-using GGGGGG_NNN_Lab2.Collections;
+using Collections;
 
-namespace GGGGGG_NNN_Lab2.Entities
+namespace Entities
 {
     public class Employee
     {
-        public string Surname { get; set; }
-        public string FirstName { get; set; }
-        // Using custom collection for work records as per Lab 1 requirement
-        public MyCustomCollection<WorkRecord> WorkRecords { get; set; }
+        public string Name { get; set; }
+        public MyCustomCollection<WorkRecord> PerformedWorks { get; set; }
 
-        public Employee(string surname, string firstName)
+        public Employee(string name)
         {
-            Surname = surname;
-            FirstName = firstName;
-            WorkRecords = new MyCustomCollection<WorkRecord>();
+            Name = name;
+            PerformedWorks = new MyCustomCollection<WorkRecord>();
         }
 
-        public override string ToString()
-        {
-            return $"{Surname} {FirstName}";
-        }
+        public override string ToString() => Name;
     }
 }

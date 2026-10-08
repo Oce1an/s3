@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Entities
 {
-    public static class GenericMathHelper
+    public static class GenericMath
     {
         public static T Add<T>(T a, T b) where T : IAdditionalOperators<T, T, T>
         {

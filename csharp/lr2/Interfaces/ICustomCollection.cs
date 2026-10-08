@@ -1,4 +1,4 @@
-namespace GGGGGG_NNN_Lab2.Interfaces
+namespace Interfaces
 {
     public interface ICustomCollection<T>
     {

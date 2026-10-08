@@ -1,3 +1,4 @@
+using System;
 using Collections;
 using Contracts;
 
@@ -8,29 +9,41 @@ namespace Entities
         public MyCustomCollection<WorkType> WorkTypes { get; set; }
         public MyCustomCollection<Employee> Employees { get; set; }
 
+        public event EventHandler<PayrollList>? ListChanged;
+        public event EventHandler<WorkPerformed>? WorkPerformed;
+
         public SalaryDepartment()
         {
             WorkTypes = new MyCustomCollection<WorkType>();
             Employees = new MyCustomCollection<Employee>();
         }
 
-        public void AddWorkType(WorkType workType) => WorkTypes.Add(workType);
-        public void AddEmployee(Employee employee) => Employees.Add(employee);
+        public void AddWorkType(WorkType workType)
+        {
+            WorkTypes.Add(workType);
+            OnListChanged(new PayrollList("Добавлен", "Вид работы", workType.Name));
+        }
+
+        public void AddEmployee(Employee employee)
+        {
+            Employees.Add(employee);
+            OnListChanged(new PayrollList("Добавлен", "Работник", employee.Name));
+        }
 
         public void AssignWork(Employee employee, WorkType workType, double quantity)
         {
             employee.PerformedWorks.Add(new WorkRecord(workType, quantity));
+            OnWorkPerformed(new WorkPerformed(employee.Name, workType.Name, quantity));
         }
 
         public MyCustomCollection<Employee> GetEmployeesByWorkType(WorkType workType)
         {
             MyCustomCollection<Employee> result = new MyCustomCollection<Employee>();
-            for (int i = 0; i < Employees.Count; i++)
+            foreach (Employee emp in Employees)
             {
-                Employee emp = Employees[i];
-                for (int j = 0; j < emp.PerformedWorks.Count; j++)
+                foreach (WorkRecord record in emp.PerformedWorks)
                 {
-                    if (emp.PerformedWorks[j].WorkType.Name == workType.Name)
+                    if (record.WorkType.Name == workType.Name)
                     {
                         result.Add(emp);
                         break;
@@ -43,9 +56,8 @@ namespace Entities
         public double CalculateEmployeeSalary(Employee employee)
         {
             double total = 0;
-            for (int i = 0; i < employee.PerformedWorks.Count; i++)
+            foreach (WorkRecord record in employee.PerformedWorks)
             {
-                var record = employee.PerformedWorks[i];
                 double cost = GenericMath.Multiply(record.WorkType.Rate, record.Quantity);
                 total = GenericMath.Add(total, cost);
             }
@@ -55,11 +67,21 @@ namespace Entities
         public double CalculateTotalPayroll()
         {
             double total = 0;
-            for (int i = 0; i < Employees.Count; i++)
+            foreach (Employee emp in Employees)
             {
-                total = GenericMath.Add(total, CalculateEmployeeSalary(Employees[i]));
+                total = GenericMath.Add(total, CalculateEmployeeSalary(emp));
             }
             return total;
+        }
+
+        protected virtual void OnListChanged(PayrollList e)
+        {
+            ListChanged?.Invoke(this, e);
+        }
+
+        protected virtual void OnWorkPerformed(WorkPerformed e)
+        {
+            WorkPerformed?.Invoke(this, e);
         }
     }
 }
