@@ -4,7 +4,7 @@ namespace Entities
 {
     public static class GenericMath
     {
-        public static T Add<T>(T a, T b) where T : IAdditionalOperators<T, T, T>
+        public static T Add<T>(T a, T b) where T : IAdditionOperators<T, T, T>
         {
             return a + b;
         }

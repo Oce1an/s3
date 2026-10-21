@@ -10,10 +10,11 @@ namespace VoronovLR1
         {
             SalaryDepartment department = new SalaryDepartment();
 
-            // 1. Ввод информации о видах работ
-            WorkType coding = new WorkType("Программирование", 1500.0);
-            WorkType testing = new WorkType("Тестирование", 1000.0);
-            WorkType design = new WorkType("Дизайн", 1200.0);
+            WorkType coding = new WorkType("Программирование", 15.0);
+            WorkType testing = new WorkType("Тестирование", 10.0);
+            WorkType design = new WorkType("Дизайн", 12.0);
+
+
 
             department.AddWorkType(coding);
             department.AddWorkType(testing);
@@ -26,10 +27,9 @@ namespace VoronovLR1
             }
             Console.WriteLine();
 
-            // 2. Ввод информации о работниках
-            Employee emp1 = new Employee("Воронов");
-            Employee emp2 = new Employee("Романов");
-            Employee emp3 = new Employee("Сидоров");
+            Employee emp1 = new Employee("Воронов1");
+            Employee emp2 = new Employee("Воронов2");
+            Employee emp3 = new Employee("Воронов3");
 
             department.AddEmployee(emp1);
             department.AddEmployee(emp2);
@@ -42,14 +42,12 @@ namespace VoronovLR1
             }
             Console.WriteLine();
 
-            // 3. Регистрация выполненных работ
-            department.AssignWork(emp1, coding, 10);
+            department.AssignWork(emp1, coding, 3);
             department.AssignWork(emp1, testing, 5);
-            department.AssignWork(emp2, coding, 8);
+            department.AssignWork(emp2, coding, 4);
             department.AssignWork(emp2, design, 4);
             department.AssignWork(emp3, testing, 12);
 
-            // 4. Вывод информации о работниках, выполнявших конкретную работу
             Console.WriteLine("Работники, выполнявшие работу 'Программирование':");
             MyCustomCollection<Employee> coders = department.GetEmployeesByWorkType(coding);
             for (int i = 0; i < coders.Count; i++)
@@ -58,7 +56,31 @@ namespace VoronovLR1
             }
             Console.WriteLine();
 
-            string searchName = "Иванов";
+            string searchName1 = "Воронов1";
+            Console.WriteLine($"Поиск зарплаты для работника: {searchName}");
+            Employee foundEmp = null;
+            for (int i = 0; i < department.Employees.Count; i++)
+            {
+                if (department.Employees[i].Name == searchName)
+                {
+                    foundEmp = department.Employees[i];
+                    break;
+                }
+            }
+
+            string searchName2 = "Воронов2";
+            Console.WriteLine($"Поиск зарплаты для работника: {searchName}");
+            Employee foundEmp = null;
+            for (int i = 0; i < department.Employees.Count; i++)
+            {
+                if (department.Employees[i].Name == searchName)
+                {
+                    foundEmp = department.Employees[i];
+                    break;
+                }
+            }
+
+            string searchName3 = "Воронов3";
             Console.WriteLine($"Поиск зарплаты для работника: {searchName}");
             Employee foundEmp = null;
             for (int i = 0; i < department.Employees.Count; i++)

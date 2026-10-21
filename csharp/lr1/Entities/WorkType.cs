@@ -5,10 +5,10 @@ namespace Entities
         public string Name { get; set; }
         public double Rate { get; set; }
 
-        public WorkType(string Name, double Rate)
+        public WorkType(string name, double rate)
         {
             Name = name;
-            Rate = Rate;
+            Rate = rate;
         }
 
         public override string ToString() => Name;
