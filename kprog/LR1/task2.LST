@@ -1,0 +1,21 @@
+  ADDR B1 B2 B3 B4 D:\Programs\THRSim11\mine\LR1\task2.asm          PAGE       1
+
+                    org $8000
+
+  8000 36           psha
+  8001 37           pshb
+
+  8002 8F           xgdx
+  8003 3C           pshx
+
+  8004 1A EF 80     sty $80,x
+  8007 EE 80        ldx $80,x
+
+  8009 02           idiv
+
+  800A FF 80 40     stx $8040
+  800D 38           pulx
+  800E 33           pulb
+  800F 32           pula
+
+  8010 FE 80 40     ldx $8040

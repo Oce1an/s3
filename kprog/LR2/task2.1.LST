@@ -1,0 +1,8 @@
+  ADDR B1 B2 B3 B4 thrass11.tmp                                     PAGE       1
+
+                    org $9000
+
+  9000 00           fcb $00
+  9001 11           fcb $11
+
+  9002 20 FE        bra *

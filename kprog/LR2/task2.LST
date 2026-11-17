@@ -1,0 +1,31 @@
+  ADDR B1 B2 B3 B4 thrass11.tmp                                     PAGE       1
+
+                    org $9000
+
+  9000 01           fcb $01
+  9001 02           fcb $02
+
+                    org $8000
+
+                   start:
+  8000 CE 90 00     ldx #$9000
+  8003 18 CE 90 FF  ldy #$90ff
+
+                   loop:
+  8007 A6 00        ldaa 0,x
+  8009 18 E6 00     ldab 0,y
+  800C 18 A7 00     staa 0,y
+  800F E7 00        stab 0,x
+
+  8011 08           inx
+  8012 18 09        dey
+
+  8014 8C 90 80     cpx #$9080
+  8017 26 EE        bne loop
+
+  8019 20 FE        bra *
+
+  Symbol Table 
+
+  START              8000
+  LOOP               8007

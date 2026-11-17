@@ -1,0 +1,12 @@
+  ADDR B1 B2 B3 B4 C:\dev\s3\kprog\LR2\task1.asm                    PAGE       1
+
+                    org $8000
+
+  8000 18 DF 00     sty $00
+  8003 8F           xgdx
+
+  8004 94 00        anda $00
+  8006 D4 01        andb $01
+
+  8008 8F           xgdx
+  8009 20 FE        bra *
