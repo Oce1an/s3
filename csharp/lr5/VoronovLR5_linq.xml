@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Firms>
+  <Firm Name="БургерКинг">
+    <Address>пр. Независимости, 56</Address>
+    <HRDepartment>
+      <HeadName>Воронов1</HeadName>
+      <StaffCount>1</StaffCount>
+    </HRDepartment>
+  </Firm>
+  <Firm Name="Макдональдс">
+    <Address>пр. Независимости, 23</Address>
+    <HRDepartment>
+      <HeadName>Воронов2</HeadName>
+      <StaffCount>2</StaffCount>
+    </HRDepartment>
+  </Firm>
+  <Firm Name="КФС">
+    <Address>пр. Победителей, 1</Address>
+    <HRDepartment>
+      <HeadName>Воронов3</HeadName>
+      <StaffCount>3</StaffCount>
+    </HRDepartment>
+  </Firm>
+</Firms>
